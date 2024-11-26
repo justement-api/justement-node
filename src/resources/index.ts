@@ -1,10 +1,25 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-export { Count, type CountExecuteResponse, type CountExecuteParams } from './count';
 export {
   Documents,
+  type DecisionDocument,
   type Document,
   type DocumentRetrieveParams,
-  type DocumentReferenceRetrieveParams,
+  type DocumentRetrieveByReferenceParams,
 } from './documents';
-export { Search, type SearchResultSnippets, type SearchExecuteParams } from './search';
+export {
+  Errors,
+  type AuthenticationError,
+  type DocumentNotFoundError,
+  type InternalError,
+  type ValidationError,
+} from './errors';
+export {
+  SearchEngine,
+  type Language,
+  type SearchResultSnippet,
+  type SearchResultSnippets,
+  type SearchEngineCountResponse,
+  type SearchEngineCountParams,
+  type SearchEngineSearchParams,
+} from './search-engine';

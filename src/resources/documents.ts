@@ -20,12 +20,28 @@ export class Documents extends APIResource {
    * This endpoint accepts Swiss legal references in their standard citation format
    * and returns the corresponding document if found.
    */
-  referenceRetrieve(
-    query: DocumentReferenceRetrieveParams,
+  retrieveByReference(
+    query: DocumentRetrieveByReferenceParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<Document> {
     return this._client.get('/api/documentByRef', { query, ...options });
   }
+}
+
+export interface DecisionDocument {
+  docId: string;
+
+  language: string;
+
+  name: string;
+
+  organ: string;
+
+  text: string;
+
+  url: string;
+
+  year: number;
 }
 
 export interface Document {
@@ -51,7 +67,7 @@ export interface DocumentRetrieveParams {
   docId: string;
 }
 
-export interface DocumentReferenceRetrieveParams {
+export interface DocumentRetrieveByReferenceParams {
   /**
    * The legal reference of the document.
    */
@@ -60,8 +76,9 @@ export interface DocumentReferenceRetrieveParams {
 
 export declare namespace Documents {
   export {
+    type DecisionDocument as DecisionDocument,
     type Document as Document,
     type DocumentRetrieveParams as DocumentRetrieveParams,
-    type DocumentReferenceRetrieveParams as DocumentReferenceRetrieveParams,
+    type DocumentRetrieveByReferenceParams as DocumentRetrieveByReferenceParams,
   };
 }

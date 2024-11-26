@@ -24,8 +24,8 @@ describe('resource documents', () => {
     const response = await client.documents.retrieve({ docId: 'docId' });
   });
 
-  test('referenceRetrieve: only required params', async () => {
-    const responsePromise = client.documents.referenceRetrieve({ docRef: 'docRef' });
+  test('retrieveByReference: only required params', async () => {
+    const responsePromise = client.documents.retrieveByReference({ docRef: 'docRef' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -35,7 +35,7 @@ describe('resource documents', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('referenceRetrieve: required and optional params', async () => {
-    const response = await client.documents.referenceRetrieve({ docRef: 'docRef' });
+  test('retrieveByReference: required and optional params', async () => {
+    const response = await client.documents.retrieveByReference({ docRef: 'docRef' });
   });
 });
