@@ -4,20 +4,37 @@ import { type Agent } from './_shims/index';
 import * as qs from './internal/qs';
 import * as Core from './core';
 import * as Errors from './error';
+import * as Pagination from './pagination';
+import { type PageNumberPaginationParams, PageNumberPaginationResponse } from './pagination';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
-import { Count, CountExecuteParams, CountExecuteResponse } from './resources/count';
 import {
+  DecisionDocument,
   Document,
-  DocumentReferenceRetrieveParams,
+  DocumentRetrieveByReferenceParams,
   DocumentRetrieveParams,
   Documents,
 } from './resources/documents';
-import { Search, SearchExecuteParams, SearchResultSnippets } from './resources/search';
+import {
+  AuthenticationError,
+  DocumentNotFoundError,
+  Errors as ErrorsAPIErrors,
+  InternalError,
+  ValidationError,
+} from './resources/errors';
+import {
+  Language,
+  SearchEngine,
+  SearchEngineCountParams,
+  SearchEngineCountResponse,
+  SearchEngineSearchParams,
+  SearchResultSnippet,
+  SearchResultSnippets,
+} from './resources/search-engine';
 
 export interface ClientOptions {
   /**
-   * A bearer token used for HTTP Bearer authentication
+   * API key for authentication
    */
   bearerToken?: string | undefined;
 
@@ -90,7 +107,7 @@ export class Justement extends Core.APIClient {
    * API Client for interfacing with the Justement API.
    *
    * @param {string | undefined} [opts.bearerToken=process.env['BEARER_TOKEN'] ?? undefined]
-   * @param {string} [opts.baseURL=process.env['JUSTEMENT_BASE_URL'] ?? https://localhost:8080/test-api] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env['JUSTEMENT_BASE_URL'] ?? https://justement.ch] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
    * @param {Core.Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -112,7 +129,7 @@ export class Justement extends Core.APIClient {
     const options: ClientOptions = {
       bearerToken,
       ...opts,
-      baseURL: baseURL || `https://localhost:8080/test-api`,
+      baseURL: baseURL || `https://justement.ch`,
     };
 
     super({
@@ -128,9 +145,9 @@ export class Justement extends Core.APIClient {
     this.bearerToken = bearerToken;
   }
 
-  search: API.Search = new API.Search(this);
-  count: API.Count = new API.Count(this);
+  searchEngine: API.SearchEngine = new API.SearchEngine(this);
   documents: API.Documents = new API.Documents(this);
+  errors: API.Errors = new API.Errors(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -172,29 +189,42 @@ export class Justement extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-Justement.Search = Search;
-Justement.Count = Count;
+Justement.SearchEngine = SearchEngine;
 Justement.Documents = Documents;
+Justement.Errors = ErrorsAPIErrors;
 export declare namespace Justement {
   export type RequestOptions = Core.RequestOptions;
 
+  export import PageNumberPagination = Pagination.PageNumberPagination;
   export {
-    Search as Search,
-    type SearchResultSnippets as SearchResultSnippets,
-    type SearchExecuteParams as SearchExecuteParams,
+    type PageNumberPaginationParams as PageNumberPaginationParams,
+    type PageNumberPaginationResponse as PageNumberPaginationResponse,
   };
 
   export {
-    Count as Count,
-    type CountExecuteResponse as CountExecuteResponse,
-    type CountExecuteParams as CountExecuteParams,
+    SearchEngine as SearchEngine,
+    type Language as Language,
+    type SearchResultSnippet as SearchResultSnippet,
+    type SearchResultSnippets as SearchResultSnippets,
+    type SearchEngineCountResponse as SearchEngineCountResponse,
+    type SearchEngineCountParams as SearchEngineCountParams,
+    type SearchEngineSearchParams as SearchEngineSearchParams,
   };
 
   export {
     Documents as Documents,
+    type DecisionDocument as DecisionDocument,
     type Document as Document,
     type DocumentRetrieveParams as DocumentRetrieveParams,
-    type DocumentReferenceRetrieveParams as DocumentReferenceRetrieveParams,
+    type DocumentRetrieveByReferenceParams as DocumentRetrieveByReferenceParams,
+  };
+
+  export {
+    ErrorsAPIErrors as Errors,
+    type AuthenticationError as AuthenticationError,
+    type DocumentNotFoundError as DocumentNotFoundError,
+    type InternalError as InternalError,
+    type ValidationError as ValidationError,
   };
 }
 

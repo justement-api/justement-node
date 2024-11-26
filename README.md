@@ -4,7 +4,7 @@
 
 This library provides convenient access to the Justement REST API from server-side TypeScript or JavaScript.
 
-The REST API documentation can be found on [docs.justement.com](https://docs.justement.com). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [justement.ch](https://justement.ch/api/docs). The full API of this library can be found in [api.md](api.md).
 
 It is generated with [Stainless](https://www.stainlessapi.com/).
 
@@ -25,12 +25,17 @@ The full API of this library can be found in [api.md](api.md).
 ```js
 import Justement from 'justement';
 
-const client = new Justement();
+const client = new Justement({
+  bearerToken: process.env['BEARER_TOKEN'], // This is the default and can be omitted
+});
 
 async function main() {
-  const document = await client.documents.retrieve({ docId: 'REPLACE_ME' });
+  const searchResultSnippets = await client.searchEngine.search({
+    language: 'de',
+    query: 'art. 8 abs. 2 BV diskriminierung',
+  });
 
-  console.log(document.docId);
+  console.log(searchResultSnippets.resultCount);
 }
 
 main();
@@ -44,11 +49,16 @@ This library includes TypeScript definitions for all request params and response
 ```ts
 import Justement from 'justement';
 
-const client = new Justement();
+const client = new Justement({
+  bearerToken: process.env['BEARER_TOKEN'], // This is the default and can be omitted
+});
 
 async function main() {
-  const params: Justement.DocumentRetrieveParams = { docId: 'REPLACE_ME' };
-  const document: Justement.Document = await client.documents.retrieve(params);
+  const params: Justement.SearchEngineSearchParams = {
+    language: 'de',
+    query: 'art. 8 abs. 2 BV diskriminierung',
+  };
+  const searchResultSnippets: Justement.SearchResultSnippets = await client.searchEngine.search(params);
 }
 
 main();
@@ -65,15 +75,17 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const document = await client.documents.retrieve({ docId: 'REPLACE_ME' }).catch(async (err) => {
-    if (err instanceof Justement.APIError) {
-      console.log(err.status); // 400
-      console.log(err.name); // BadRequestError
-      console.log(err.headers); // {server: 'nginx', ...}
-    } else {
-      throw err;
-    }
-  });
+  const searchResultSnippets = await client.searchEngine
+    .search({ language: 'de', query: 'art. 8 abs. 2 BV diskriminierung' })
+    .catch(async (err) => {
+      if (err instanceof Justement.APIError) {
+        console.log(err.status); // 400
+        console.log(err.name); // BadRequestError
+        console.log(err.headers); // {server: 'nginx', ...}
+      } else {
+        throw err;
+      }
+    });
 }
 
 main();
@@ -108,7 +120,7 @@ const client = new Justement({
 });
 
 // Or, configure per-request:
-await client.documents.retrieve({ docId: 'REPLACE_ME' }, {
+await client.searchEngine.search({ language: 'de', query: 'art. 8 abs. 2 BV diskriminierung' }, {
   maxRetries: 5,
 });
 ```
@@ -125,7 +137,7 @@ const client = new Justement({
 });
 
 // Override per-request:
-await client.documents.retrieve({ docId: 'REPLACE_ME' }, {
+await client.searchEngine.search({ language: 'de', query: 'art. 8 abs. 2 BV diskriminierung' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -146,15 +158,17 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const client = new Justement();
 
-const response = await client.documents.retrieve({ docId: 'REPLACE_ME' }).asResponse();
+const response = await client.searchEngine
+  .search({ language: 'de', query: 'art. 8 abs. 2 BV diskriminierung' })
+  .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: document, response: raw } = await client.documents
-  .retrieve({ docId: 'REPLACE_ME' })
+const { data: searchResultSnippets, response: raw } = await client.searchEngine
+  .search({ language: 'de', query: 'art. 8 abs. 2 BV diskriminierung' })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(document.docId);
+console.log(searchResultSnippets.resultCount);
 ```
 
 ### Making custom/undocumented requests
@@ -258,8 +272,8 @@ const client = new Justement({
 });
 
 // Override per-request:
-await client.documents.retrieve(
-  { docId: 'REPLACE_ME' },
+await client.searchEngine.search(
+  { language: 'de', query: 'art. 8 abs. 2 BV diskriminierung' },
   {
     httpAgent: new http.Agent({ keepAlive: false }),
   },
