@@ -29,7 +29,6 @@ import {
   InternalError,
   ValidationError,
 } from './resources/errors';
-import { Snippet as SnippetAPISnippet, SnippetDocumentParams } from './resources/snippet';
 
 export interface ClientOptions {
   /**
@@ -145,7 +144,6 @@ export class Justement extends Core.APIClient {
   }
 
   document: API.DocumentResource = new API.DocumentResource(this);
-  snippet: API.Snippet = new API.Snippet(this);
   errors: API.Errors = new API.Errors(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
@@ -190,7 +188,6 @@ export class Justement extends Core.APIClient {
 
 Justement.DocumentResource = DocumentResource;
 Justement.SnippetsJustementPagination = SnippetsJustementPagination;
-Justement.Snippet = SnippetAPISnippet;
 Justement.Errors = ErrorsAPIErrors;
 export declare namespace Justement {
   export type RequestOptions = Core.RequestOptions;
@@ -215,8 +212,6 @@ export declare namespace Justement {
     type DocumentCountParams as DocumentCountParams,
     type DocumentSearchParams as DocumentSearchParams,
   };
-
-  export { SnippetAPISnippet as Snippet, type SnippetDocumentParams as SnippetDocumentParams };
 
   export {
     ErrorsAPIErrors as Errors,

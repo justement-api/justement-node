@@ -7,7 +7,6 @@ export {
   type InternalError,
   type ValidationError,
 } from './errors';
-export { Snippet, type SnippetDocumentParams } from './snippet';
 export {
   SnippetsJustementPagination,
   DocumentResource,
