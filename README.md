@@ -26,16 +26,14 @@ The full API of this library can be found in [api.md](api.md).
 import Justement from 'justement';
 
 const client = new Justement({
-  bearerToken: process.env['BEARER_TOKEN'], // This is the default and can be omitted
+  apiKey: process.env['API_KEY'], // This is the default and can be omitted
 });
 
 async function main() {
-  const searchResultSnippets = await client.searchEngine.search({
-    language: 'de',
-    query: 'art. 8 abs. 2 BV diskriminierung',
-  });
+  const page = await client.document.search({ language: 'de', query: 'art. 8 abs. 2 BV diskriminierung' });
+  const snippet = page.results[0];
 
-  console.log(searchResultSnippets.resultCount);
+  console.log(snippet.docId);
 }
 
 main();
@@ -50,15 +48,15 @@ This library includes TypeScript definitions for all request params and response
 import Justement from 'justement';
 
 const client = new Justement({
-  bearerToken: process.env['BEARER_TOKEN'], // This is the default and can be omitted
+  apiKey: process.env['API_KEY'], // This is the default and can be omitted
 });
 
 async function main() {
-  const params: Justement.SearchEngineSearchParams = {
+  const params: Justement.DocumentSearchParams = {
     language: 'de',
     query: 'art. 8 abs. 2 BV diskriminierung',
   };
-  const searchResultSnippets: Justement.SearchResultSnippets = await client.searchEngine.search(params);
+  const [snippet]: [Justement.Snippet] = await client.document.search(params);
 }
 
 main();
@@ -75,7 +73,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const searchResultSnippets = await client.searchEngine
+  const page = await client.document
     .search({ language: 'de', query: 'art. 8 abs. 2 BV diskriminierung' })
     .catch(async (err) => {
       if (err instanceof Justement.APIError) {
@@ -120,7 +118,7 @@ const client = new Justement({
 });
 
 // Or, configure per-request:
-await client.searchEngine.search({ language: 'de', query: 'art. 8 abs. 2 BV diskriminierung' }, {
+await client.document.search({ language: 'de', query: 'art. 8 abs. 2 BV diskriminierung' }, {
   maxRetries: 5,
 });
 ```
@@ -137,7 +135,7 @@ const client = new Justement({
 });
 
 // Override per-request:
-await client.searchEngine.search({ language: 'de', query: 'art. 8 abs. 2 BV diskriminierung' }, {
+await client.document.search({ language: 'de', query: 'art. 8 abs. 2 BV diskriminierung' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -145,6 +143,45 @@ await client.searchEngine.search({ language: 'de', query: 'art. 8 abs. 2 BV disk
 On timeout, an `APIConnectionTimeoutError` is thrown.
 
 Note that requests which time out will be [retried twice by default](#retries).
+
+## Auto-pagination
+
+List methods in the Justement API are paginated.
+You can use the `for await … of` syntax to iterate through items across all pages:
+
+```ts
+async function fetchAllDocuments(params) {
+  const allDocuments = [];
+  // Automatically fetches more pages as needed.
+  for await (const snippet of client.document.search({
+    language: 'de',
+    page: 2,
+    query: 'art. 8 abs. 2 BV diskriminierung',
+  })) {
+    allDocuments.push(snippet);
+  }
+  return allDocuments;
+}
+```
+
+Alternatively, you can request a single page at a time:
+
+```ts
+let page = await client.document.search({
+  language: 'de',
+  page: 2,
+  query: 'art. 8 abs. 2 BV diskriminierung',
+});
+for (const snippet of page.results) {
+  console.log(snippet);
+}
+
+// Convenience methods are provided for manually paginating:
+while (page.hasNextPage()) {
+  page = await page.getNextPage();
+  // ...
+}
+```
 
 ## Advanced Usage
 
@@ -158,17 +195,19 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const client = new Justement();
 
-const response = await client.searchEngine
+const response = await client.document
   .search({ language: 'de', query: 'art. 8 abs. 2 BV diskriminierung' })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: searchResultSnippets, response: raw } = await client.searchEngine
+const { data: page, response: raw } = await client.document
   .search({ language: 'de', query: 'art. 8 abs. 2 BV diskriminierung' })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(searchResultSnippets.resultCount);
+for await (const snippet of page) {
+  console.log(snippet.docId);
+}
 ```
 
 ### Making custom/undocumented requests
@@ -272,7 +311,7 @@ const client = new Justement({
 });
 
 // Override per-request:
-await client.searchEngine.search(
+await client.document.search(
   { language: 'de', query: 'art. 8 abs. 2 BV diskriminierung' },
   {
     httpAgent: new http.Agent({ keepAlive: false }),

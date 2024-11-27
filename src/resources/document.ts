@@ -3,20 +3,38 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
+import { JustementPagination, type JustementPaginationParams } from '../pagination';
 
-export class SearchEngine extends APIResource {
+export class DocumentResource extends APIResource {
+  /**
+   * Retrieve a document by its document identifier.
+   *
+   * The docId is returned by the `search` endpoint as part of the result snippets.
+   * The response includes the full document content and metadata.
+   */
+  byId(query: DocumentByIDParams, options?: Core.RequestOptions): Core.APIPromise<Document> {
+    return this._client.get('/api/document', { query, ...options });
+  }
+
+  /**
+   * Retrieve a document using its standard legal reference.
+   *
+   * This endpoint accepts Swiss legal references in their standard citation format
+   * and returns the corresponding document if found.
+   */
+  byRef(query: DocumentByRefParams, options?: Core.RequestOptions): Core.APIPromise<Document> {
+    return this._client.get('/api/documentByRef', { query, ...options });
+  }
+
   /**
    * Count the number of documents matching the search criteria.
    */
+  count(query?: DocumentCountParams, options?: Core.RequestOptions): Core.APIPromise<DocumentCountResponse>;
+  count(options?: Core.RequestOptions): Core.APIPromise<DocumentCountResponse>;
   count(
-    query?: SearchEngineCountParams,
+    query: DocumentCountParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.APIPromise<SearchEngineCountResponse>;
-  count(options?: Core.RequestOptions): Core.APIPromise<SearchEngineCountResponse>;
-  count(
-    query: SearchEngineCountParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<SearchEngineCountResponse> {
+  ): Core.APIPromise<DocumentCountResponse> {
     if (isRequestOptions(query)) {
       return this.count({}, query);
     }
@@ -28,24 +46,58 @@ export class SearchEngine extends APIResource {
    * documents, ranked by relevance.
    */
   search(
-    query?: SearchEngineSearchParams,
+    query?: DocumentSearchParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<SearchResultSnippets>;
-  search(options?: Core.RequestOptions): Core.APIPromise<SearchResultSnippets>;
+  ): Core.PagePromise<SnippetsJustementPagination, Snippet>;
+  search(options?: Core.RequestOptions): Core.PagePromise<SnippetsJustementPagination, Snippet>;
   search(
-    query: SearchEngineSearchParams | Core.RequestOptions = {},
+    query: DocumentSearchParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.APIPromise<SearchResultSnippets> {
+  ): Core.PagePromise<SnippetsJustementPagination, Snippet> {
     if (isRequestOptions(query)) {
       return this.search({}, query);
     }
-    return this._client.get('/api/search', { query, ...options });
+    return this._client.getAPIList('/api/search', SnippetsJustementPagination, { query, ...options });
   }
+}
+
+export class SnippetsJustementPagination extends JustementPagination<Snippet> {}
+
+export interface Decision {
+  docId: string;
+
+  language: string;
+
+  name: string;
+
+  organ: string;
+
+  text: string;
+
+  url: string;
+
+  year: number;
+}
+
+export interface Document {
+  docId: string;
+
+  language: string;
+
+  name: string;
+
+  organ: string;
+
+  text: string;
+
+  url: string;
+
+  year: number;
 }
 
 export type Language = 'de' | 'en' | 'fr' | 'it' | 'rm';
 
-export interface SearchResultSnippet {
+export interface Snippet {
   docId: string;
 
   documentUrl: string;
@@ -61,15 +113,29 @@ export interface SearchResultSnippet {
   year: number;
 }
 
-export interface SearchResultSnippets {
+export interface Snippets {
   resultCount: number;
 
-  results?: Array<SearchResultSnippet>;
+  results?: Array<Snippet>;
 }
 
-export type SearchEngineCountResponse = number;
+export type DocumentCountResponse = number;
 
-export interface SearchEngineCountParams {
+export interface DocumentByIDParams {
+  /**
+   * The `docId` of the document that should be returned.
+   */
+  docId: string;
+}
+
+export interface DocumentByRefParams {
+  /**
+   * The legal reference of the document.
+   */
+  docRef: string;
+}
+
+export interface DocumentCountParams {
   /**
    * **Classification facet**: Filters results based on hierarchical categories. Each
    * element in the list represents a level in the hierarchy:
@@ -150,7 +216,7 @@ export interface SearchEngineCountParams {
   query?: string;
 }
 
-export interface SearchEngineSearchParams {
+export interface DocumentSearchParams extends JustementPaginationParams {
   /**
    * **Classification facet**: Filters results based on hierarchical categories. Each
    * element in the list represents a level in the hierarchy:
@@ -220,11 +286,6 @@ export interface SearchEngineSearchParams {
   language?: Language;
 
   /**
-   * Result page (1-based). Maximum page is total results / 10 rounded up.
-   */
-  page?: number;
-
-  /**
    * **Search query**: Retrieves the count of documents matching the criteria.
    *
    * - Terms are **implicitly ANDed** (e.g., `hund biss` only matches documents
@@ -241,13 +302,20 @@ export interface SearchEngineSearchParams {
   query?: string;
 }
 
-export declare namespace SearchEngine {
+DocumentResource.SnippetsJustementPagination = SnippetsJustementPagination;
+
+export declare namespace DocumentResource {
   export {
+    type Decision as Decision,
+    type Document as Document,
     type Language as Language,
-    type SearchResultSnippet as SearchResultSnippet,
-    type SearchResultSnippets as SearchResultSnippets,
-    type SearchEngineCountResponse as SearchEngineCountResponse,
-    type SearchEngineCountParams as SearchEngineCountParams,
-    type SearchEngineSearchParams as SearchEngineSearchParams,
+    type Snippet as Snippet,
+    type Snippets as Snippets,
+    type DocumentCountResponse as DocumentCountResponse,
+    SnippetsJustementPagination as SnippetsJustementPagination,
+    type DocumentByIDParams as DocumentByIDParams,
+    type DocumentByRefParams as DocumentByRefParams,
+    type DocumentCountParams as DocumentCountParams,
+    type DocumentSearchParams as DocumentSearchParams,
   };
 }

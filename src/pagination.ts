@@ -2,34 +2,29 @@
 
 import { AbstractPage, Response, APIClient, FinalRequestOptions, PageInfo } from './core';
 
-export interface PageNumberPaginationResponse<Item> {
+export interface JustementPaginationResponse<Item> {
   results: Array<Item>;
-
-  result_count: number;
 }
 
-export interface PageNumberPaginationParams {
+export interface JustementPaginationParams {
   page?: number;
 }
 
-export class PageNumberPagination<Item>
+export class JustementPagination<Item>
   extends AbstractPage<Item>
-  implements PageNumberPaginationResponse<Item>
+  implements JustementPaginationResponse<Item>
 {
   results: Array<Item>;
-
-  result_count: number;
 
   constructor(
     client: APIClient,
     response: Response,
-    body: PageNumberPaginationResponse<Item>,
+    body: JustementPaginationResponse<Item>,
     options: FinalRequestOptions,
   ) {
     super(client, response, body, options);
 
     this.results = body.results || [];
-    this.result_count = body.result_count || 0;
   }
 
   getPaginatedItems(): Item[] {
@@ -37,7 +32,7 @@ export class PageNumberPagination<Item>
   }
 
   // @deprecated Please use `nextPageInfo()` instead
-  nextPageParams(): Partial<PageNumberPaginationParams> | null {
+  nextPageParams(): Partial<JustementPaginationParams> | null {
     const info = this.nextPageInfo();
     if (!info) return null;
     if ('params' in info) return info.params;
@@ -47,7 +42,7 @@ export class PageNumberPagination<Item>
   }
 
   nextPageInfo(): PageInfo | null {
-    const query = this.options.query as PageNumberPaginationParams;
+    const query = this.options.query as JustementPaginationParams;
     const currentPage = query?.page ?? 1;
 
     return { params: { page: currentPage + 1 } };
