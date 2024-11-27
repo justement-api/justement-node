@@ -16,12 +16,6 @@ Methods:
 - <code title="get /api/count">client.document.<a href="./src/resources/document.ts">count</a>({ ...params }) -> DocumentCountResponse</code>
 - <code title="get /api/search">client.document.<a href="./src/resources/document.ts">search</a>({ ...params }) -> SnippetsJustementPagination</code>
 
-# Snippet
-
-Methods:
-
-- <code title="get /api/document">client.snippet.<a href="./src/resources/snippet.ts">document</a>({ ...params }) -> Document</code>
-
 # Errors
 
 Types:
