@@ -5,16 +5,23 @@ import * as qs from './internal/qs';
 import * as Core from './core';
 import * as Errors from './error';
 import * as Pagination from './pagination';
-import { type PageNumberPaginationParams, PageNumberPaginationResponse } from './pagination';
+import { type JustementPaginationParams, JustementPaginationResponse } from './pagination';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
 import {
-  DecisionDocument,
+  Decision,
   Document,
-  DocumentRetrieveByReferenceParams,
-  DocumentRetrieveParams,
-  Documents,
-} from './resources/documents';
+  DocumentByIDParams,
+  DocumentByRefParams,
+  DocumentCountParams,
+  DocumentCountResponse,
+  DocumentResource,
+  DocumentSearchParams,
+  Language,
+  Snippet,
+  Snippets,
+  SnippetsJustementPagination,
+} from './resources/document';
 import {
   AuthenticationError,
   DocumentNotFoundError,
@@ -22,21 +29,13 @@ import {
   InternalError,
   ValidationError,
 } from './resources/errors';
-import {
-  Language,
-  SearchEngine,
-  SearchEngineCountParams,
-  SearchEngineCountResponse,
-  SearchEngineSearchParams,
-  SearchResultSnippet,
-  SearchResultSnippets,
-} from './resources/search-engine';
+import { Snippet as SnippetAPISnippet, SnippetDocumentParams } from './resources/snippet';
 
 export interface ClientOptions {
   /**
-   * API key for authentication
+   * Defaults to process.env['API_KEY'].
    */
-  bearerToken?: string | undefined;
+  apiKey?: string | undefined;
 
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
@@ -99,14 +98,14 @@ export interface ClientOptions {
  * API Client for interfacing with the Justement API.
  */
 export class Justement extends Core.APIClient {
-  bearerToken: string;
+  apiKey: string;
 
   private _options: ClientOptions;
 
   /**
    * API Client for interfacing with the Justement API.
    *
-   * @param {string | undefined} [opts.bearerToken=process.env['BEARER_TOKEN'] ?? undefined]
+   * @param {string | undefined} [opts.apiKey=process.env['API_KEY'] ?? undefined]
    * @param {string} [opts.baseURL=process.env['JUSTEMENT_BASE_URL'] ?? https://justement.ch] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
@@ -117,17 +116,17 @@ export class Justement extends Core.APIClient {
    */
   constructor({
     baseURL = Core.readEnv('JUSTEMENT_BASE_URL'),
-    bearerToken = Core.readEnv('BEARER_TOKEN'),
+    apiKey = Core.readEnv('API_KEY'),
     ...opts
   }: ClientOptions = {}) {
-    if (bearerToken === undefined) {
+    if (apiKey === undefined) {
       throw new Errors.JustementError(
-        "The BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Justement client with an bearerToken option, like new Justement({ bearerToken: 'My Bearer Token' }).",
+        "The API_KEY environment variable is missing or empty; either provide it, or instantiate the Justement client with an apiKey option, like new Justement({ apiKey: 'My API Key' }).",
       );
     }
 
     const options: ClientOptions = {
-      bearerToken,
+      apiKey,
       ...opts,
       baseURL: baseURL || `https://justement.ch`,
     };
@@ -142,11 +141,11 @@ export class Justement extends Core.APIClient {
 
     this._options = options;
 
-    this.bearerToken = bearerToken;
+    this.apiKey = apiKey;
   }
 
-  searchEngine: API.SearchEngine = new API.SearchEngine(this);
-  documents: API.Documents = new API.Documents(this);
+  document: API.DocumentResource = new API.DocumentResource(this);
+  snippet: API.Snippet = new API.Snippet(this);
   errors: API.Errors = new API.Errors(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
@@ -161,7 +160,7 @@ export class Justement extends Core.APIClient {
   }
 
   protected override authHeaders(opts: Core.FinalRequestOptions): Core.Headers {
-    return { Authorization: `Bearer ${this.bearerToken}` };
+    return { Authorization: `Bearer ${this.apiKey}` };
   }
 
   protected override stringifyQuery(query: Record<string, unknown>): string {
@@ -189,35 +188,35 @@ export class Justement extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-Justement.SearchEngine = SearchEngine;
-Justement.Documents = Documents;
+Justement.DocumentResource = DocumentResource;
+Justement.SnippetsJustementPagination = SnippetsJustementPagination;
+Justement.Snippet = SnippetAPISnippet;
 Justement.Errors = ErrorsAPIErrors;
 export declare namespace Justement {
   export type RequestOptions = Core.RequestOptions;
 
-  export import PageNumberPagination = Pagination.PageNumberPagination;
+  export import JustementPagination = Pagination.JustementPagination;
   export {
-    type PageNumberPaginationParams as PageNumberPaginationParams,
-    type PageNumberPaginationResponse as PageNumberPaginationResponse,
+    type JustementPaginationParams as JustementPaginationParams,
+    type JustementPaginationResponse as JustementPaginationResponse,
   };
 
   export {
-    SearchEngine as SearchEngine,
-    type Language as Language,
-    type SearchResultSnippet as SearchResultSnippet,
-    type SearchResultSnippets as SearchResultSnippets,
-    type SearchEngineCountResponse as SearchEngineCountResponse,
-    type SearchEngineCountParams as SearchEngineCountParams,
-    type SearchEngineSearchParams as SearchEngineSearchParams,
-  };
-
-  export {
-    Documents as Documents,
-    type DecisionDocument as DecisionDocument,
+    DocumentResource as DocumentResource,
+    type Decision as Decision,
     type Document as Document,
-    type DocumentRetrieveParams as DocumentRetrieveParams,
-    type DocumentRetrieveByReferenceParams as DocumentRetrieveByReferenceParams,
+    type Language as Language,
+    type Snippet as Snippet,
+    type Snippets as Snippets,
+    type DocumentCountResponse as DocumentCountResponse,
+    SnippetsJustementPagination as SnippetsJustementPagination,
+    type DocumentByIDParams as DocumentByIDParams,
+    type DocumentByRefParams as DocumentByRefParams,
+    type DocumentCountParams as DocumentCountParams,
+    type DocumentSearchParams as DocumentSearchParams,
   };
+
+  export { SnippetAPISnippet as Snippet, type SnippetDocumentParams as SnippetDocumentParams };
 
   export {
     ErrorsAPIErrors as Errors,

@@ -1,28 +1,26 @@
-# SearchEngine
+# Document
 
 Types:
 
-- <code><a href="./src/resources/search-engine.ts">Language</a></code>
-- <code><a href="./src/resources/search-engine.ts">SearchResultSnippet</a></code>
-- <code><a href="./src/resources/search-engine.ts">SearchResultSnippets</a></code>
-- <code><a href="./src/resources/search-engine.ts">SearchEngineCountResponse</a></code>
+- <code><a href="./src/resources/document.ts">Decision</a></code>
+- <code><a href="./src/resources/document.ts">Document</a></code>
+- <code><a href="./src/resources/document.ts">Language</a></code>
+- <code><a href="./src/resources/document.ts">Snippet</a></code>
+- <code><a href="./src/resources/document.ts">Snippets</a></code>
+- <code><a href="./src/resources/document.ts">DocumentCountResponse</a></code>
 
 Methods:
 
-- <code title="get /api/count">client.searchEngine.<a href="./src/resources/search-engine.ts">count</a>({ ...params }) -> SearchEngineCountResponse</code>
-- <code title="get /api/search">client.searchEngine.<a href="./src/resources/search-engine.ts">search</a>({ ...params }) -> SearchResultSnippets</code>
+- <code title="get /api/document">client.document.<a href="./src/resources/document.ts">byId</a>({ ...params }) -> Document</code>
+- <code title="get /api/documentByRef">client.document.<a href="./src/resources/document.ts">byRef</a>({ ...params }) -> Document</code>
+- <code title="get /api/count">client.document.<a href="./src/resources/document.ts">count</a>({ ...params }) -> DocumentCountResponse</code>
+- <code title="get /api/search">client.document.<a href="./src/resources/document.ts">search</a>({ ...params }) -> SnippetsJustementPagination</code>
 
-# Documents
-
-Types:
-
-- <code><a href="./src/resources/documents.ts">DecisionDocument</a></code>
-- <code><a href="./src/resources/documents.ts">Document</a></code>
+# Snippet
 
 Methods:
 
-- <code title="get /api/document">client.documents.<a href="./src/resources/documents.ts">retrieve</a>({ ...params }) -> Document</code>
-- <code title="get /api/documentByRef">client.documents.<a href="./src/resources/documents.ts">retrieveByReference</a>({ ...params }) -> Document</code>
+- <code title="get /api/document">client.snippet.<a href="./src/resources/snippet.ts">document</a>({ ...params }) -> Document</code>
 
 # Errors
 

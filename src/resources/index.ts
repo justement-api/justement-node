@@ -1,25 +1,24 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 export {
-  Documents,
-  type DecisionDocument,
-  type Document,
-  type DocumentRetrieveParams,
-  type DocumentRetrieveByReferenceParams,
-} from './documents';
-export {
   Errors,
   type AuthenticationError,
   type DocumentNotFoundError,
   type InternalError,
   type ValidationError,
 } from './errors';
+export { Snippet, type SnippetDocumentParams } from './snippet';
 export {
-  SearchEngine,
+  SnippetsJustementPagination,
+  DocumentResource,
+  type Decision,
+  type Document,
   type Language,
-  type SearchResultSnippet,
-  type SearchResultSnippets,
-  type SearchEngineCountResponse,
-  type SearchEngineCountParams,
-  type SearchEngineSearchParams,
-} from './search-engine';
+  type Snippet,
+  type Snippets,
+  type DocumentCountResponse,
+  type DocumentByIDParams,
+  type DocumentByRefParams,
+  type DocumentCountParams,
+  type DocumentSearchParams,
+} from './document';
