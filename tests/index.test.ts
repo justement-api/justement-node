@@ -172,14 +172,14 @@ describe('instantiate client', () => {
 
   test('with environment variable arguments', () => {
     // set options via env var
-    process.env['API_KEY'] = 'My API Key';
+    process.env['JUSTEMENT_API_KEY'] = 'My API Key';
     const client = new Justement();
     expect(client.apiKey).toBe('My API Key');
   });
 
   test('with overriden environment variable arguments', () => {
     // set options via env var
-    process.env['API_KEY'] = 'another My API Key';
+    process.env['JUSTEMENT_API_KEY'] = 'another My API Key';
     const client = new Justement({ apiKey: 'My API Key' });
     expect(client.apiKey).toBe('My API Key');
   });

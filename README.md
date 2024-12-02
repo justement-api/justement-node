@@ -11,11 +11,8 @@ It is generated with [Stainless](https://www.stainlessapi.com/).
 ## Installation
 
 ```sh
-npm install git+ssh://git@github.com:stainless-sdks/justement-node.git
+npm install justement
 ```
-
-> [!NOTE]
-> Once this package is [published to npm](https://app.stainlessapi.com/docs/guides/publish), this will become: `npm install justement`
 
 ## Usage
 
@@ -26,7 +23,7 @@ The full API of this library can be found in [api.md](api.md).
 import Justement from 'justement';
 
 const client = new Justement({
-  apiKey: process.env['API_KEY'], // This is the default and can be omitted
+  apiKey: process.env['JUSTEMENT_API_KEY'], // This is the default and can be omitted
 });
 
 async function main() {
@@ -48,14 +45,11 @@ This library includes TypeScript definitions for all request params and response
 import Justement from 'justement';
 
 const client = new Justement({
-  apiKey: process.env['API_KEY'], // This is the default and can be omitted
+  apiKey: process.env['JUSTEMENT_API_KEY'], // This is the default and can be omitted
 });
 
 async function main() {
-  const params: Justement.DocumentSearchParams = {
-    language: 'de',
-    query: 'art. 8 abs. 2 BV diskriminierung',
-  };
+  const params: Justement.DocumentSearchParams = { query: 'art. 8 abs. 2 BV diskriminierung' };
   const [snippet]: [Justement.Snippet] = await client.document.search(params);
 }
 
@@ -74,7 +68,7 @@ a subclass of `APIError` will be thrown:
 ```ts
 async function main() {
   const page = await client.document
-    .search({ language: 'de', query: 'art. 8 abs. 2 BV diskriminierung' })
+    .search({ query: 'art. 8 abs. 2 BV diskriminierung' })
     .catch(async (err) => {
       if (err instanceof Justement.APIError) {
         console.log(err.status); // 400
@@ -118,7 +112,7 @@ const client = new Justement({
 });
 
 // Or, configure per-request:
-await client.document.search({ language: 'de', query: 'art. 8 abs. 2 BV diskriminierung' }, {
+await client.document.search({ query: 'art. 8 abs. 2 BV diskriminierung' }, {
   maxRetries: 5,
 });
 ```
@@ -135,7 +129,7 @@ const client = new Justement({
 });
 
 // Override per-request:
-await client.document.search({ language: 'de', query: 'art. 8 abs. 2 BV diskriminierung' }, {
+await client.document.search({ query: 'art. 8 abs. 2 BV diskriminierung' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -195,14 +189,12 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const client = new Justement();
 
-const response = await client.document
-  .search({ language: 'de', query: 'art. 8 abs. 2 BV diskriminierung' })
-  .asResponse();
+const response = await client.document.search({ query: 'art. 8 abs. 2 BV diskriminierung' }).asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
 const { data: page, response: raw } = await client.document
-  .search({ language: 'de', query: 'art. 8 abs. 2 BV diskriminierung' })
+  .search({ query: 'art. 8 abs. 2 BV diskriminierung' })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
 for await (const snippet of page) {
@@ -270,7 +262,7 @@ import Justement from 'justement';
 ```
 
 To do the inverse, add `import "justement/shims/node"` (which does import polyfills).
-This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/stainless-sdks/justement-node/tree/main/src/_shims#readme)).
+This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/justement-api/justement-node/tree/main/src/_shims#readme)).
 
 ### Logging and middleware
 
@@ -312,7 +304,7 @@ const client = new Justement({
 
 // Override per-request:
 await client.document.search(
-  { language: 'de', query: 'art. 8 abs. 2 BV diskriminierung' },
+  { query: 'art. 8 abs. 2 BV diskriminierung' },
   {
     httpAgent: new http.Agent({ keepAlive: false }),
   },
@@ -329,7 +321,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/justement-node/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/justement-api/justement-node/issues) with questions, bugs, or suggestions.
 
 ## Requirements
 

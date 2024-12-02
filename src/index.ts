@@ -22,17 +22,10 @@ import {
   Snippets,
   SnippetsJustementPagination,
 } from './resources/document';
-import {
-  AuthenticationError,
-  DocumentNotFoundError,
-  Errors as ErrorsAPIErrors,
-  InternalError,
-  ValidationError,
-} from './resources/errors';
 
 export interface ClientOptions {
   /**
-   * Defaults to process.env['API_KEY'].
+   * Defaults to process.env['JUSTEMENT_API_KEY'].
    */
   apiKey?: string | undefined;
 
@@ -104,7 +97,7 @@ export class Justement extends Core.APIClient {
   /**
    * API Client for interfacing with the Justement API.
    *
-   * @param {string | undefined} [opts.apiKey=process.env['API_KEY'] ?? undefined]
+   * @param {string | undefined} [opts.apiKey=process.env['JUSTEMENT_API_KEY'] ?? undefined]
    * @param {string} [opts.baseURL=process.env['JUSTEMENT_BASE_URL'] ?? https://justement.ch] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
@@ -115,12 +108,12 @@ export class Justement extends Core.APIClient {
    */
   constructor({
     baseURL = Core.readEnv('JUSTEMENT_BASE_URL'),
-    apiKey = Core.readEnv('API_KEY'),
+    apiKey = Core.readEnv('JUSTEMENT_API_KEY'),
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
       throw new Errors.JustementError(
-        "The API_KEY environment variable is missing or empty; either provide it, or instantiate the Justement client with an apiKey option, like new Justement({ apiKey: 'My API Key' }).",
+        "The JUSTEMENT_API_KEY environment variable is missing or empty; either provide it, or instantiate the Justement client with an apiKey option, like new Justement({ apiKey: 'My API Key' }).",
       );
     }
 
@@ -144,7 +137,6 @@ export class Justement extends Core.APIClient {
   }
 
   document: API.DocumentResource = new API.DocumentResource(this);
-  errors: API.Errors = new API.Errors(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -188,7 +180,6 @@ export class Justement extends Core.APIClient {
 
 Justement.DocumentResource = DocumentResource;
 Justement.SnippetsJustementPagination = SnippetsJustementPagination;
-Justement.Errors = ErrorsAPIErrors;
 export declare namespace Justement {
   export type RequestOptions = Core.RequestOptions;
 
@@ -211,14 +202,6 @@ export declare namespace Justement {
     type DocumentByRefParams as DocumentByRefParams,
     type DocumentCountParams as DocumentCountParams,
     type DocumentSearchParams as DocumentSearchParams,
-  };
-
-  export {
-    ErrorsAPIErrors as Errors,
-    type AuthenticationError as AuthenticationError,
-    type DocumentNotFoundError as DocumentNotFoundError,
-    type InternalError as InternalError,
-    type ValidationError as ValidationError,
   };
 }
 

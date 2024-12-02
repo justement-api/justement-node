@@ -1,13 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 export {
-  Errors,
-  type AuthenticationError,
-  type DocumentNotFoundError,
-  type InternalError,
-  type ValidationError,
-} from './errors';
-export {
   SnippetsJustementPagination,
   DocumentResource,
   type Decision,
