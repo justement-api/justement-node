@@ -49,10 +49,7 @@ const client = new Justement({
 });
 
 async function main() {
-  const params: Justement.DocumentSearchParams = {
-    language: 'de',
-    query: 'art. 8 abs. 2 BV diskriminierung',
-  };
+  const params: Justement.DocumentSearchParams = { query: 'art. 8 abs. 2 BV diskriminierung' };
   const [snippet]: [Justement.Snippet] = await client.document.search(params);
 }
 
@@ -71,7 +68,7 @@ a subclass of `APIError` will be thrown:
 ```ts
 async function main() {
   const page = await client.document
-    .search({ language: 'de', query: 'art. 8 abs. 2 BV diskriminierung' })
+    .search({ query: 'art. 8 abs. 2 BV diskriminierung' })
     .catch(async (err) => {
       if (err instanceof Justement.APIError) {
         console.log(err.status); // 400
@@ -115,7 +112,7 @@ const client = new Justement({
 });
 
 // Or, configure per-request:
-await client.document.search({ language: 'de', query: 'art. 8 abs. 2 BV diskriminierung' }, {
+await client.document.search({ query: 'art. 8 abs. 2 BV diskriminierung' }, {
   maxRetries: 5,
 });
 ```
@@ -132,7 +129,7 @@ const client = new Justement({
 });
 
 // Override per-request:
-await client.document.search({ language: 'de', query: 'art. 8 abs. 2 BV diskriminierung' }, {
+await client.document.search({ query: 'art. 8 abs. 2 BV diskriminierung' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -192,14 +189,12 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const client = new Justement();
 
-const response = await client.document
-  .search({ language: 'de', query: 'art. 8 abs. 2 BV diskriminierung' })
-  .asResponse();
+const response = await client.document.search({ query: 'art. 8 abs. 2 BV diskriminierung' }).asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
 const { data: page, response: raw } = await client.document
-  .search({ language: 'de', query: 'art. 8 abs. 2 BV diskriminierung' })
+  .search({ query: 'art. 8 abs. 2 BV diskriminierung' })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
 for await (const snippet of page) {
@@ -309,7 +304,7 @@ const client = new Justement({
 
 // Override per-request:
 await client.document.search(
-  { language: 'de', query: 'art. 8 abs. 2 BV diskriminierung' },
+  { query: 'art. 8 abs. 2 BV diskriminierung' },
   {
     httpAgent: new http.Agent({ keepAlive: false }),
   },
