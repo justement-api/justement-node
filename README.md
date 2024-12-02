@@ -23,7 +23,7 @@ The full API of this library can be found in [api.md](api.md).
 import Justement from 'justement';
 
 const client = new Justement({
-  apiKey: process.env['API_KEY'], // This is the default and can be omitted
+  apiKey: process.env['JUSTEMENT_API_KEY'], // This is the default and can be omitted
 });
 
 async function main() {
@@ -45,7 +45,7 @@ This library includes TypeScript definitions for all request params and response
 import Justement from 'justement';
 
 const client = new Justement({
-  apiKey: process.env['API_KEY'], // This is the default and can be omitted
+  apiKey: process.env['JUSTEMENT_API_KEY'], // This is the default and can be omitted
 });
 
 async function main() {

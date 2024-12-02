@@ -32,7 +32,7 @@ import {
 
 export interface ClientOptions {
   /**
-   * Defaults to process.env['API_KEY'].
+   * Defaults to process.env['JUSTEMENT_API_KEY'].
    */
   apiKey?: string | undefined;
 
@@ -104,7 +104,7 @@ export class Justement extends Core.APIClient {
   /**
    * API Client for interfacing with the Justement API.
    *
-   * @param {string | undefined} [opts.apiKey=process.env['API_KEY'] ?? undefined]
+   * @param {string | undefined} [opts.apiKey=process.env['JUSTEMENT_API_KEY'] ?? undefined]
    * @param {string} [opts.baseURL=process.env['JUSTEMENT_BASE_URL'] ?? https://justement.ch] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
@@ -115,12 +115,12 @@ export class Justement extends Core.APIClient {
    */
   constructor({
     baseURL = Core.readEnv('JUSTEMENT_BASE_URL'),
-    apiKey = Core.readEnv('API_KEY'),
+    apiKey = Core.readEnv('JUSTEMENT_API_KEY'),
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
       throw new Errors.JustementError(
-        "The API_KEY environment variable is missing or empty; either provide it, or instantiate the Justement client with an apiKey option, like new Justement({ apiKey: 'My API Key' }).",
+        "The JUSTEMENT_API_KEY environment variable is missing or empty; either provide it, or instantiate the Justement client with an apiKey option, like new Justement({ apiKey: 'My API Key' }).",
       );
     }
 
