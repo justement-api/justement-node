@@ -22,13 +22,6 @@ import {
   Snippets,
   SnippetsJustementPagination,
 } from './resources/document';
-import {
-  AuthenticationError,
-  DocumentNotFoundError,
-  Errors as ErrorsAPIErrors,
-  InternalError,
-  ValidationError,
-} from './resources/errors';
 
 export interface ClientOptions {
   /**
@@ -144,7 +137,6 @@ export class Justement extends Core.APIClient {
   }
 
   document: API.DocumentResource = new API.DocumentResource(this);
-  errors: API.Errors = new API.Errors(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -188,7 +180,6 @@ export class Justement extends Core.APIClient {
 
 Justement.DocumentResource = DocumentResource;
 Justement.SnippetsJustementPagination = SnippetsJustementPagination;
-Justement.Errors = ErrorsAPIErrors;
 export declare namespace Justement {
   export type RequestOptions = Core.RequestOptions;
 
@@ -211,14 +202,6 @@ export declare namespace Justement {
     type DocumentByRefParams as DocumentByRefParams,
     type DocumentCountParams as DocumentCountParams,
     type DocumentSearchParams as DocumentSearchParams,
-  };
-
-  export {
-    ErrorsAPIErrors as Errors,
-    type AuthenticationError as AuthenticationError,
-    type DocumentNotFoundError as DocumentNotFoundError,
-    type InternalError as InternalError,
-    type ValidationError as ValidationError,
   };
 }
 
