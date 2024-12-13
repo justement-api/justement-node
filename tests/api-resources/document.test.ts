@@ -21,7 +21,7 @@ describe('resource document', () => {
   });
 
   test('byId: required and optional params', async () => {
-    const response = await client.document.byId({ docId: 'docId' });
+    const response = await client.document.byId({ docId: 'docId', language: 'de' });
   });
 
   test('byRef: only required params', async () => {
@@ -36,7 +36,7 @@ describe('resource document', () => {
   });
 
   test('byRef: required and optional params', async () => {
-    const response = await client.document.byRef({ docRef: 'docRef' });
+    const response = await client.document.byRef({ docRef: 'docRef', language: 'de' });
   });
 
   test('count', async () => {
