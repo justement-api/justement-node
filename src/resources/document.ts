@@ -77,6 +77,10 @@ export interface Decision {
   url: string;
 
   year: number;
+
+  docRef?: Array<string>;
+
+  lawRef?: Array<string>;
 }
 
 export interface Document {
@@ -93,6 +97,10 @@ export interface Document {
   url: string;
 
   year: number;
+
+  docRef?: Array<string>;
+
+  lawRef?: Array<string>;
 }
 
 export type Language = 'de' | 'en' | 'fr' | 'it' | 'rm';
@@ -126,6 +134,11 @@ export interface DocumentByIDParams {
    * The `docId` of the document that should be returned.
    */
   docId: string;
+
+  /**
+   * Preferred language for article references.
+   */
+  language?: Language;
 }
 
 export interface DocumentByRefParams {
@@ -133,6 +146,11 @@ export interface DocumentByRefParams {
    * The legal reference of the document.
    */
   docRef: string;
+
+  /**
+   * Preferred language for article references.
+   */
+  language?: Language;
 }
 
 export interface DocumentCountParams {

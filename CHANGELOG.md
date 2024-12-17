@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.1.0-alpha.2 (2024-12-13)
+
+Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
+
+### Features
+
+* **api:** api update ([#12](https://github.com/justement-api/justement-node/issues/12)) ([90d1575](https://github.com/justement-api/justement-node/commit/90d15757177cf8188e5e7032d4412125fec1c1e4))
+
+
+### Chores
+
+* **internal:** bump cross-spawn to v7.0.6 ([#9](https://github.com/justement-api/justement-node/issues/9)) ([bdca0bb](https://github.com/justement-api/justement-node/commit/bdca0bb4b8831868bce04485b1620fdd4a443721))
+* **internal:** remove unnecessary getRequestClient function ([#7](https://github.com/justement-api/justement-node/issues/7)) ([961ab7c](https://github.com/justement-api/justement-node/commit/961ab7ca834c4a1a58dd7d2c7e1dccf323eecbd8))
+* **internal:** update isAbsoluteURL ([#11](https://github.com/justement-api/justement-node/issues/11)) ([b9d9a8a](https://github.com/justement-api/justement-node/commit/b9d9a8af4211cb850c949a541d1b8b0e541caa0c))
+* **types:** nicer error class types + jsdocs ([#10](https://github.com/justement-api/justement-node/issues/10)) ([85d8777](https://github.com/justement-api/justement-node/commit/85d87772a0e01f6054bef2206c2d6ad75dc72d95))
+
 ## 0.1.0-alpha.1 (2024-12-02)
 
 Full Changelog: [v0.0.1-alpha.0...v0.1.0-alpha.1](https://github.com/justement-api/justement-node/compare/v0.0.1-alpha.0...v0.1.0-alpha.1)
