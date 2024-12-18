@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.3 (2024-12-18)
+
+Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
+
+### Chores
+
+* **internal:** fix some typos ([#14](https://github.com/justement-api/justement-node/issues/14)) ([457b37a](https://github.com/justement-api/justement-node/commit/457b37a652d60d3acd19b28fc2736f241c975620))
+
 ## 0.1.0-alpha.2 (2024-12-13)
 
 Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
