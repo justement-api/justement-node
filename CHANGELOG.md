@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0-alpha.3 (2025-01-02)
+
+Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
+
+### Bug Fixes
+
+* **client:** normalize method ([#16](https://github.com/justement-api/justement-node/issues/16)) ([43e6765](https://github.com/justement-api/justement-node/commit/43e676536bdb141ca19618e8d7bb813955efe166))
+
+
+### Chores
+
+* **internal:** codegen related update ([#17](https://github.com/justement-api/justement-node/issues/17)) ([790173e](https://github.com/justement-api/justement-node/commit/790173e51013a0bc67000cdea14dd41c174b2b2c))
+* **internal:** codegen related update ([#18](https://github.com/justement-api/justement-node/issues/18)) ([cb6f712](https://github.com/justement-api/justement-node/commit/cb6f712314676569c956474c7233d7bce9f8d9b5))
+* **internal:** fix some typos ([#14](https://github.com/justement-api/justement-node/issues/14)) ([457b37a](https://github.com/justement-api/justement-node/commit/457b37a652d60d3acd19b28fc2736f241c975620))
+
 ## 0.1.0-alpha.2 (2024-12-13)
 
 Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
