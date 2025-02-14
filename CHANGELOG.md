@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.4 (2025-02-14)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
+
+### Bug Fixes
+
+* **client:** fix export map for index exports ([#21](https://github.com/justement-api/justement-node/issues/21)) ([0f9409e](https://github.com/justement-api/justement-node/commit/0f9409e0477c169c36419836c2468d9393d76691))
+
+
+### Chores
+
+* **internal:** codegen related update ([#19](https://github.com/justement-api/justement-node/issues/19)) ([15286db](https://github.com/justement-api/justement-node/commit/15286db21c96355a0aa51e6b1ff11a7658660f21))
+
 ## 0.1.0-alpha.3 (2025-01-02)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
