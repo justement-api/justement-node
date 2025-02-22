@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.5 (2025-02-22)
+
+Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
+
+### Chores
+
+* **internal:** fix devcontainers setup ([#23](https://github.com/justement-api/justement-node/issues/23)) ([afb4303](https://github.com/justement-api/justement-node/commit/afb4303c3ec1adac446ee0c68e5bab5448f11832))
+
 ## 0.1.0-alpha.4 (2025-02-14)
 
 Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
