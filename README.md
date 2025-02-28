@@ -6,7 +6,7 @@ This library provides convenient access to the Justement REST API from server-si
 
 The REST API documentation can be found on [justement.ch](https://justement.ch/api/docs). The full API of this library can be found in [api.md](api.md).
 
-It is generated with [Stainless](https://www.stainlessapi.com/).
+It is generated with [Stainless](https://www.stainless.com/).
 
 ## Installation
 
