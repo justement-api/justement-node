@@ -1,5 +1,32 @@
 # Changelog
 
+## 0.1.0-alpha.5 (2025-03-22)
+
+Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
+
+### Features
+
+* add SKIP_BREW env var to ./scripts/bootstrap ([#26](https://github.com/justement-api/justement-node/issues/26)) ([c40da8f](https://github.com/justement-api/justement-node/commit/c40da8f1e74d2fe3665a019cfc7a849fecef45fe))
+* **client:** accept RFC6838 JSON content types ([#27](https://github.com/justement-api/justement-node/issues/27)) ([f8ff762](https://github.com/justement-api/justement-node/commit/f8ff76239b9422241c49e046fc19dbb472277f43))
+
+
+### Bug Fixes
+
+* avoid type error in certain environments ([#31](https://github.com/justement-api/justement-node/issues/31)) ([9d0bceb](https://github.com/justement-api/justement-node/commit/9d0bcebf61bc51843f1ed9ba21b8bd9ffc727999))
+
+
+### Chores
+
+* **exports:** cleaner resource index imports ([#29](https://github.com/justement-api/justement-node/issues/29)) ([7f3266b](https://github.com/justement-api/justement-node/commit/7f3266b49426d6487503e2bf554269804ec92475))
+* **exports:** stop using path fallbacks ([#30](https://github.com/justement-api/justement-node/issues/30)) ([0532661](https://github.com/justement-api/justement-node/commit/0532661686f39f92d689e577b88b29cb992ba84b))
+* **internal:** fix devcontainers setup ([#23](https://github.com/justement-api/justement-node/issues/23)) ([afb4303](https://github.com/justement-api/justement-node/commit/afb4303c3ec1adac446ee0c68e5bab5448f11832))
+* **internal:** remove extra empty newlines ([#28](https://github.com/justement-api/justement-node/issues/28)) ([6969dc3](https://github.com/justement-api/justement-node/commit/6969dc3276faba1bc0d8c4308703245d37505a97))
+
+
+### Documentation
+
+* update URLs from stainlessapi.com to stainless.com ([#25](https://github.com/justement-api/justement-node/issues/25)) ([7b282dc](https://github.com/justement-api/justement-node/commit/7b282dcf153b966794d51d9f8552206f7a2846a8))
+
 ## 0.1.0-alpha.4 (2025-02-14)
 
 Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
