@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.6 (2025-03-28)
+
+Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
+
+### Bug Fixes
+
+* **internal:** work around https://github.com/vercel/next.js/issues/76881 ([#33](https://github.com/justement-api/justement-node/issues/33)) ([ec74f6b](https://github.com/justement-api/justement-node/commit/ec74f6b63c5cf5e7398e8c78d5eeea8468ab302a))
+
 ## 0.1.0-alpha.5 (2025-03-22)
 
 Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
