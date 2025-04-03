@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.7 (2025-04-03)
+
+Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
+
+### Bug Fixes
+
+* **client:** send `X-Stainless-Timeout` in seconds ([#36](https://github.com/justement-api/justement-node/issues/36)) ([e6ad23c](https://github.com/justement-api/justement-node/commit/e6ad23c8074abfa2b34f5a5ce845e00b0b413fce))
+
 ## 0.1.0-alpha.6 (2025-03-28)
 
 Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
