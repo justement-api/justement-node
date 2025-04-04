@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.8 (2025-04-04)
+
+Full Changelog: [v0.1.0-alpha.7...v0.1.0-alpha.8](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.7...v0.1.0-alpha.8)
+
+### Bug Fixes
+
+* **api:** improve type resolution when importing as a package ([#41](https://github.com/justement-api/justement-node/issues/41)) ([fda4f4e](https://github.com/justement-api/justement-node/commit/fda4f4e47eae36ab567775daa7e7b0e92c264faf))
+
+
+### Chores
+
+* **internal:** add aliases for Record and Array ([#39](https://github.com/justement-api/justement-node/issues/39)) ([b03e3f0](https://github.com/justement-api/justement-node/commit/b03e3f057e16641997366e7d33dcd48a589e5e68))
+
 ## 0.1.0-alpha.7 (2025-04-03)
 
 Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
