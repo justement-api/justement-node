@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.9 (2025-04-05)
+
+Full Changelog: [v0.1.0-alpha.8...v0.1.0-alpha.9](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.8...v0.1.0-alpha.9)
+
+### Bug Fixes
+
+* **mcp:** remove unused tools.ts ([#43](https://github.com/justement-api/justement-node/issues/43)) ([b553460](https://github.com/justement-api/justement-node/commit/b55346079e990bc2539863499ee9a9cadf74b8cf))
+
 ## 0.1.0-alpha.8 (2025-04-04)
 
 Full Changelog: [v0.1.0-alpha.7...v0.1.0-alpha.8](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.7...v0.1.0-alpha.8)
