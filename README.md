@@ -144,17 +144,17 @@ List methods in the Justement API are paginated.
 You can use the `for await … of` syntax to iterate through items across all pages:
 
 ```ts
-async function fetchAllDocuments(params) {
-  const allDocuments = [];
+async function fetchAllSnippets(params) {
+  const allSnippets = [];
   // Automatically fetches more pages as needed.
   for await (const snippet of client.document.search({
     language: 'de',
     page: 2,
     query: 'art. 8 abs. 2 BV diskriminierung',
   })) {
-    allDocuments.push(snippet);
+    allSnippets.push(snippet);
   }
-  return allDocuments;
+  return allSnippets;
 }
 ```
 
