@@ -26,14 +26,10 @@ const client = new Justement({
   apiKey: process.env['JUSTEMENT_API_KEY'], // This is the default and can be omitted
 });
 
-async function main() {
-  const page = await client.document.search({ language: 'de', query: 'art. 8 abs. 2 BV diskriminierung' });
-  const snippet = page.results[0];
+const page = await client.document.search({ language: 'de', query: 'art. 8 abs. 2 BV diskriminierung' });
+const snippet = page.results[0];
 
-  console.log(snippet.docId);
-}
-
-main();
+console.log(snippet.docId);
 ```
 
 ### Request & Response types
@@ -48,12 +44,8 @@ const client = new Justement({
   apiKey: process.env['JUSTEMENT_API_KEY'], // This is the default and can be omitted
 });
 
-async function main() {
-  const params: Justement.DocumentSearchParams = { query: 'art. 8 abs. 2 BV diskriminierung' };
-  const [snippet]: [Justement.Snippet] = await client.document.search(params);
-}
-
-main();
+const params: Justement.DocumentSearchParams = { query: 'art. 8 abs. 2 BV diskriminierung' };
+const [snippet]: [Justement.Snippet] = await client.document.search(params);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -66,21 +58,17 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-async function main() {
-  const page = await client.document
-    .search({ query: 'art. 8 abs. 2 BV diskriminierung' })
-    .catch(async (err) => {
-      if (err instanceof Justement.APIError) {
-        console.log(err.status); // 400
-        console.log(err.name); // BadRequestError
-        console.log(err.headers); // {server: 'nginx', ...}
-      } else {
-        throw err;
-      }
-    });
-}
-
-main();
+const page = await client.document
+  .search({ query: 'art. 8 abs. 2 BV diskriminierung' })
+  .catch(async (err) => {
+    if (err instanceof Justement.APIError) {
+      console.log(err.status); // 400
+      console.log(err.name); // BadRequestError
+      console.log(err.headers); // {server: 'nginx', ...}
+    } else {
+      throw err;
+    }
+  });
 ```
 
 Error codes are as follows:
