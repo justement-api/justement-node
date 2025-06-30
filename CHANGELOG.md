@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.1.0-alpha.10 (2025-06-30)
+
+Full Changelog: [v0.1.0-alpha.9...v0.1.0-alpha.10](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.9...v0.1.0-alpha.10)
+
+### Features
+
+* **api:** api update ([5eaf538](https://github.com/justement-api/justement-node/commit/5eaf5380cfaba517ea06f2d8fb23cb3d6512ae47))
+
+
+### Chores
+
+* **ci:** add timeout thresholds for CI jobs ([8a4f693](https://github.com/justement-api/justement-node/commit/8a4f69352b2345da4b15501629fe2b775857cc6d))
+* **ci:** bump node version for release workflows ([8bee877](https://github.com/justement-api/justement-node/commit/8bee877f91e2c707db1bf4dba5a1d466c4dba996))
+* **ci:** only use depot for staging repos ([3587e53](https://github.com/justement-api/justement-node/commit/3587e53ea91f708910df9d05cd8ab7dfc3db7a74))
+* **client:** minor internal fixes ([2fdb583](https://github.com/justement-api/justement-node/commit/2fdb583ab01929adf700e9a6add7a63cfe1a780a))
+* **docs:** grammar improvements ([df639ca](https://github.com/justement-api/justement-node/commit/df639caf68b665014c5a5c4c12e6ab6fa81a3810))
+* **docs:** use top-level-await in example snippets ([4349b89](https://github.com/justement-api/justement-node/commit/4349b896445ff9f64d747af5d7a14dea11daf8a9))
+* improve publish-npm script --latest tag logic ([4c535ae](https://github.com/justement-api/justement-node/commit/4c535ae8b5e8cefb03be3f373915fa7f011d6c63))
+* **internal:** codegen related update ([e29a1a6](https://github.com/justement-api/justement-node/commit/e29a1a6b9695299848d9f57727efb3dd2f489663))
+* **internal:** reduce CI branch coverage ([e5680c6](https://github.com/justement-api/justement-node/commit/e5680c68c67b5cc379a7dbce9157755055fe5cc4))
+* **internal:** upload builds and expand CI branch coverage ([7fa7a5d](https://github.com/justement-api/justement-node/commit/7fa7a5d51b7ab92aca7ad232a70c47e842b1316d))
+
+
+### Documentation
+
+* **pagination:** improve naming ([926c1bc](https://github.com/justement-api/justement-node/commit/926c1bc6a744b2da3fc802f6965cec258454f26d))
+* **readme:** fix typo ([8fcb60c](https://github.com/justement-api/justement-node/commit/8fcb60c7f7bb75e8cc203ffee887efefb399e8fa))
+
 ## 0.1.0-alpha.9 (2025-04-05)
 
 Full Changelog: [v0.1.0-alpha.8...v0.1.0-alpha.9](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.8...v0.1.0-alpha.9)
