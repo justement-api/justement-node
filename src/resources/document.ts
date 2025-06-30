@@ -64,6 +64,8 @@ export class DocumentResource extends APIResource {
 export class SnippetsJustementPagination extends JustementPagination<Snippet> {}
 
 export interface Decision {
+  date: string;
+
   docId: string;
 
   language: string;
@@ -75,32 +77,34 @@ export interface Decision {
   text: string;
 
   url: string;
-
-  year: number;
 
   docRef?: Array<string>;
 
   lawRef?: Array<string>;
 }
 
-export interface Document {
-  docId: string;
+export type Document = Document.ActDocument | Decision;
 
-  language: string;
+export namespace Document {
+  export interface ActDocument {
+    date: string;
 
-  name: string;
+    docId: string;
 
-  organ: string;
+    language: string;
 
-  text: string;
+    name: string;
 
-  url: string;
+    srId: string;
 
-  year: number;
+    text: string;
 
-  docRef?: Array<string>;
+    url: string;
 
-  lawRef?: Array<string>;
+    availableLanguages?: Array<string>;
+
+    hierarchy?: Array<string>;
+  }
 }
 
 export type Language = 'de' | 'en' | 'fr' | 'it' | 'rm';
