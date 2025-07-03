@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.11 (2025-07-03)
+
+Full Changelog: [v0.1.0-alpha.10...v0.1.0-alpha.11](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.10...v0.1.0-alpha.11)
+
+### Bug Fixes
+
+* **client:** don't send `Content-Type` for bodyless methods ([3c48050](https://github.com/justement-api/justement-node/commit/3c480507c9e846080499f2ee4448f849e758a614))
+
+
+### Chores
+
+* mention unit type in timeout docs ([275e2e6](https://github.com/justement-api/justement-node/commit/275e2e63cdfe208649a80f24d46f54e7363fe39e))
+
 ## 0.1.0-alpha.10 (2025-06-30)
 
 Full Changelog: [v0.1.0-alpha.9...v0.1.0-alpha.10](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.9...v0.1.0-alpha.10)
