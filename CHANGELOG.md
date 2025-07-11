@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.12 (2025-07-11)
+
+Full Changelog: [v0.1.0-alpha.11...v0.1.0-alpha.12](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.11...v0.1.0-alpha.12)
+
+### Chores
+
+* make some internal functions async ([fac2f61](https://github.com/justement-api/justement-node/commit/fac2f61d209f2a641356743a02558e19f813618a))
+
 ## 0.1.0-alpha.11 (2025-07-03)
 
 Full Changelog: [v0.1.0-alpha.10...v0.1.0-alpha.11](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.10...v0.1.0-alpha.11)
