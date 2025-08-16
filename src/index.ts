@@ -190,6 +190,7 @@ export class Justement extends Core.APIClient {
 
 Justement.DocumentResource = DocumentResource;
 Justement.SnippetsJustementPagination = SnippetsJustementPagination;
+
 export declare namespace Justement {
   export type RequestOptions = Core.RequestOptions;
 
