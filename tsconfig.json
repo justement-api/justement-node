@@ -7,11 +7,10 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "baseUrl": "./",
     "paths": {
-      "justement/_shims/auto/*": ["src/_shims/auto/*-node"],
-      "justement/*": ["src/*"],
-      "justement": ["src/index.ts"]
+      "justement/_shims/auto/*": ["./src/_shims/auto/*-node"],
+      "justement/*": ["./src/*"],
+      "justement": ["./src/index.ts"]
     },
     "noEmit": true,
 
