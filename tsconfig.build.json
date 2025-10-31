@@ -5,8 +5,8 @@
   "compilerOptions": {
     "rootDir": "./dist/src",
     "paths": {
-      "justement/*": ["dist/src/*"],
-      "justement": ["dist/src/index.ts"],
+      "justement/*": ["./dist/src/*"],
+      "justement": ["./dist/src/index.ts"],
     },
     "noEmit": false,
     "declaration": true,
