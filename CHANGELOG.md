@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.1.0-alpha.12 (2025-10-31)
+
+Full Changelog: [v0.1.0-alpha.11...v0.1.0-alpha.12](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.11...v0.1.0-alpha.12)
+
+### Features
+
+* **api:** api update ([d6a78e8](https://github.com/justement-api/justement-node/commit/d6a78e8ba886197be9da1a1c64e6d4dcebe437d1))
+
+
+### Chores
+
+* **deps:** update dependency node-fetch to v2.6.13 ([bd8ea39](https://github.com/justement-api/justement-node/commit/bd8ea3920fb8e62ea3255a9b69a35e12b0d99f54))
+* **internal:** formatting change ([556f3ee](https://github.com/justement-api/justement-node/commit/556f3ee8e3cc34452d13aedfb01817f2976ed5ef))
+* **internal:** move publish config ([ab58cf6](https://github.com/justement-api/justement-node/commit/ab58cf60c8297906ef26843bedeefb735675490e))
+* **internal:** remove redundant imports config ([51fdec3](https://github.com/justement-api/justement-node/commit/51fdec383e7f680b2c2edbd373b7b65e4c1180d2))
+* **internal:** update comment in script ([adb9ae8](https://github.com/justement-api/justement-node/commit/adb9ae851c847ba4c12d7acda103da52488e2635))
+* make some internal functions async ([fac2f61](https://github.com/justement-api/justement-node/commit/fac2f61d209f2a641356743a02558e19f813618a))
+* update @stainless-api/prism-cli to v5.15.0 ([19eada2](https://github.com/justement-api/justement-node/commit/19eada26a871c22a17a5d796ffc031f63429147d))
+* update CI script ([46450f9](https://github.com/justement-api/justement-node/commit/46450f9161c0d13dd5547ff8cb2fb8f01de8de37))
+
 ## 0.1.0-alpha.11 (2025-07-03)
 
 Full Changelog: [v0.1.0-alpha.10...v0.1.0-alpha.11](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.10...v0.1.0-alpha.11)
