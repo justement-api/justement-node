@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.13 (2025-12-06)
+
+Full Changelog: [v0.1.0-alpha.12...v0.1.0-alpha.13](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.12...v0.1.0-alpha.13)
+
+### Bug Fixes
+
+* **mcp:** return correct lines on typescript errors ([e63d669](https://github.com/justement-api/justement-node/commit/e63d66980bf32e987cb9528b0ece660cc87adae7))
+
+
+### Chores
+
+* **internal:** codegen related update ([a0b108e](https://github.com/justement-api/justement-node/commit/a0b108eb867161859a29f29c8b42665bf427c14e))
+
 ## 0.1.0-alpha.12 (2025-10-31)
 
 Full Changelog: [v0.1.0-alpha.11...v0.1.0-alpha.12](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.11...v0.1.0-alpha.12)
