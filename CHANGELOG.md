@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.14 (2025-12-06)
+
+Full Changelog: [v0.1.0-alpha.13...v0.1.0-alpha.14](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.13...v0.1.0-alpha.14)
+
+### Bug Fixes
+
+* **mcp:** correct code tool API endpoint ([7b94bfb](https://github.com/justement-api/justement-node/commit/7b94bfb35148e190b1bcb123884d241a4c4148ce))
+
 ## 0.1.0-alpha.13 (2025-12-06)
 
 Full Changelog: [v0.1.0-alpha.12...v0.1.0-alpha.13](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.12...v0.1.0-alpha.13)
