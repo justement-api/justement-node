@@ -89,7 +89,12 @@ describe('resource document', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.document.search(
-        { classificationFacet: ['string'], language: 'de', page: 1, query: 'query' },
+        {
+          classificationFacet: ['string'],
+          language: 'de',
+          page: 1,
+          query: 'query',
+        },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Justement.NotFoundError);

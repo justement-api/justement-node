@@ -26,7 +26,10 @@ const client = new Justement({
   apiKey: process.env['JUSTEMENT_API_KEY'], // This is the default and can be omitted
 });
 
-const page = await client.document.search({ language: 'de', query: 'art. 8 abs. 2 BV diskriminierung' });
+const page = await client.document.search({
+  language: 'de',
+  query: 'art. 8 abs. 2 BV diskriminierung',
+});
 const snippet = page.results[0];
 
 console.log(snippet.docId);
@@ -177,7 +180,9 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const client = new Justement();
 
-const response = await client.document.search({ query: 'art. 8 abs. 2 BV diskriminierung' }).asResponse();
+const response = await client.document
+  .search({ query: 'art. 8 abs. 2 BV diskriminierung' })
+  .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
