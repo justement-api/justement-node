@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.1.0-alpha.15 (2026-03-29)
+
+Full Changelog: [v0.1.0-alpha.14...v0.1.0-alpha.15](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.14...v0.1.0-alpha.15)
+
+### Features
+
+* **api:** api update ([4e815cf](https://github.com/justement-api/justement-node/commit/4e815cfe190596d4d23307cf58b5a71a7a7b6e9b))
+
+
+### Chores
+
+* break long lines in snippets into multiline ([85fc850](https://github.com/justement-api/justement-node/commit/85fc850e975ffee47371a53aa8c789be76068382))
+* **ci:** upgrade `actions/github-script` ([486aae8](https://github.com/justement-api/justement-node/commit/486aae8ece9c6388a11bc0743082eb2ce2e1c8a2))
+* **client:** do not parse responses with empty content-length ([c09db71](https://github.com/justement-api/justement-node/commit/c09db7174e605966fa14e32d7896803222885b1c))
+* **internal:** codegen related update ([1d8a314](https://github.com/justement-api/justement-node/commit/1d8a31423aac272cdb188dcfa2769f6b0eb6f892))
+* **internal:** codegen related update ([e4e3c82](https://github.com/justement-api/justement-node/commit/e4e3c82b496d3180b0a431a49551547459c8a936))
+* **internal:** update `actions/checkout` version ([1932cf7](https://github.com/justement-api/justement-node/commit/1932cf7997ae0ac4ac1430bb517832fecfbf4c87))
+* **internal:** upgrade babel, qs, js-yaml ([b5a5780](https://github.com/justement-api/justement-node/commit/b5a57804e8d0c6ed489448c63f9202b8de8e26b6))
+
 ## 0.1.0-alpha.14 (2025-12-06)
 
 Full Changelog: [v0.1.0-alpha.13...v0.1.0-alpha.14](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.13...v0.1.0-alpha.14)
