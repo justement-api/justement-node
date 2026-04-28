@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.1.0-alpha.16 (2026-04-28)
+
+Full Changelog: [v0.1.0-alpha.15...v0.1.0-alpha.16](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.15...v0.1.0-alpha.16)
+
+### Features
+
+* support setting headers via env ([f3ca0de](https://github.com/justement-api/justement-node/commit/f3ca0de966a56c139a56cd307c7d2ecb50a5a239))
+
+
+### Chores
+
+* **internal:** codegen related update ([40037e4](https://github.com/justement-api/justement-node/commit/40037e4e43824e3b2e3090fde41d2607d293cf33))
+* **internal:** more robust bootstrap script ([5cf34c9](https://github.com/justement-api/justement-node/commit/5cf34c9aa2f882fc8a43035f2f01b2122a79c364))
+* **tests:** bump steady to v0.20.1 ([ea39461](https://github.com/justement-api/justement-node/commit/ea39461e37bae0db04af04391764d1a7d96c0982))
+* **tests:** bump steady to v0.20.2 ([a5f839f](https://github.com/justement-api/justement-node/commit/a5f839fa583eccf5167741ad87c42f49fa4ecb76))
+* **tests:** bump steady to v0.22.1 ([6d7084f](https://github.com/justement-api/justement-node/commit/6d7084fcea67209ae72d161ac268a624989e072f))
+
 ## 0.1.0-alpha.15 (2026-03-29)
 
 Full Changelog: [v0.1.0-alpha.14...v0.1.0-alpha.15](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.14...v0.1.0-alpha.15)
