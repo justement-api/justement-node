@@ -1,4 +1,4 @@
 configured_endpoints: 4
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/justement%2Fjustement-3016f252827980e1d0aca0392db66c093af1e44a80b8f679361b408778684a80.yml
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/justement/justement-6f84ce21458d6cfe9b9058ee1e8322e92951bc4c1f8f7b1959fea6c706221c11.yml
 openapi_spec_hash: 70cf66f0576ff89d82da02f7e4b2a8e5
 config_hash: 1d854591d3bd7fe0c6b3271150b99a8c
