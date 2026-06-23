@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.17 (2026-06-23)
+
+Full Changelog: [v0.1.0-alpha.16...v0.1.0-alpha.17](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.16...v0.1.0-alpha.17)
+
+### Features
+
+* **api:** api update ([5727d4d](https://github.com/justement-api/justement-node/commit/5727d4d11685d55bd6518e6b79efabd032e7cb92))
+
 ## 0.1.0-alpha.16 (2026-04-28)
 
 Full Changelog: [v0.1.0-alpha.15...v0.1.0-alpha.16](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.15...v0.1.0-alpha.16)
