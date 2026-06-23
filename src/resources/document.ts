@@ -83,7 +83,7 @@ export interface Decision {
   lawRef?: Array<string>;
 }
 
-export type Document = Document.ActDocument | Decision;
+export type Document = Document.ActDocument | Decision | Document.ScholarshipDocument;
 
 export namespace Document {
   export interface ActDocument {
@@ -104,6 +104,48 @@ export namespace Document {
     availableLanguages?: Array<string>;
 
     hierarchy?: Array<string>;
+  }
+
+  export interface ScholarshipDocument {
+    date: string;
+
+    docId: string;
+
+    language: string;
+
+    licenseCode: string;
+
+    modifiedOutputNoticeRequired: boolean;
+
+    name: string;
+
+    publicationKind: string;
+
+    requiresShareAlikeOutput: boolean;
+
+    source: string;
+
+    text: string;
+
+    url: string;
+
+    attribution?: string;
+
+    authors?: Array<string>;
+
+    availableLanguages?: Array<string>;
+
+    citation?: string;
+
+    doi?: string;
+
+    generatedOutputNotice?: string;
+
+    licenseNotice?: string;
+
+    licenseUrl?: string;
+
+    sourceUrl?: string;
   }
 }
 
