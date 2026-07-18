@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.18 (2026-07-18)
+
+Full Changelog: [v0.1.0-alpha.17...v0.1.0-alpha.18](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.17...v0.1.0-alpha.18)
+
+### Features
+
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([d5762e3](https://github.com/justement-api/justement-node/commit/d5762e3908d19855720f6df885dbe1259dd5bd6e))
+
 ## 0.1.0-alpha.17 (2026-06-23)
 
 Full Changelog: [v0.1.0-alpha.16...v0.1.0-alpha.17](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.16...v0.1.0-alpha.17)
