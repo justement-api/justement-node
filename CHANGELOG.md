@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.19 (2026-08-20)
+
+Full Changelog: [v0.1.0-alpha.18...v0.1.0-alpha.19](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.18...v0.1.0-alpha.19)
+
+### Chores
+
+* **internal:** allow the mock server port to be set with STAINLESS_MOCK_PORT ([9485add](https://github.com/justement-api/justement-node/commit/9485addf466925e66a6de70cdf4f10397aa9dd10))
+
 ## 0.1.0-alpha.18 (2026-07-18)
 
 Full Changelog: [v0.1.0-alpha.17...v0.1.0-alpha.18](https://github.com/justement-api/justement-node/compare/v0.1.0-alpha.17...v0.1.0-alpha.18)
